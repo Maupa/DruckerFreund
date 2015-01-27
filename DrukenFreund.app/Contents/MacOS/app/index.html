@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link href="favicon.ico" rel="shortcut icon">
+	<link rel="stylesheet" href="css/style.css">
+	<title></title>  
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+	<div class="container">
+
+		<header class="header clearfix">
+			<div class="logo">Drucker Freund</div>
+
+			<nav class="menu_main">
+				<ul>
+					<li class="active"><a href="#">About</a></li>
+					<li><a href="#">Skins</a></li>
+					<li><a href="#">Samples</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<div class="info">
+			<article class="clearfix">
+	
+				<div class="col_50">
+					<div class="col_33">&#160;</div>
+					<div class="col_66 chk_box">
+						<!-- <p><input type="checkbox" name="checkbox"/> Simple agreement</p> -->
+						<button type="button" class="button">Submit</button>
+					</div>
+				</div>
+				<div class="col_50">
+					<p class="shell" id="shell"></p>
+				</div>
+			</article>
+		</div>
+		<script src='/js/jquery.min.js'></script>
+		<script src='/js/app.js'></script>
+		<script>
+			document.getElementById('shell').contentEditable = true;
+
+			$(window).load(function() {
+				$(".chk_box").shopaholic({
+					shell: $('.shell'),
+					thatbooton: $('.button')
+				});
+			});
+		</script>
+	</div>
+</body>
+</html>
