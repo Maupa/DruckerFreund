@@ -11,7 +11,7 @@
 		var domain = ""; //domain with tp
 		var model = {
 			printer: function(data){
-				return "lpadmin -p " + data.name + " -L \"" + data.location + "\" -E -v "+ domain + data.name + " -P \"/Library/Printers/PPDs/Contents/Resources/" + driver[data.driver] + "\""
+				return "/usr/sbin/lpadmin -p " + data.name + " -L \"" + data.location + "\" -E -v "+ domain + data.name + " -P \"/Library/Printers/PPDs/Contents/Resources/" + driver[data.driver] + "\""
 			}
 		};
 
