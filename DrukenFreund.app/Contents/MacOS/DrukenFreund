@@ -1,4 +1,0 @@
-#!/bin/bash
-_cd=$(pwd)
-cd $_cd"/app"
-python -m SimpleHTTPServer & > /dev/null & open http://localhost:8080/
