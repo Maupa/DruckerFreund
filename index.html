@@ -4,26 +4,30 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/select2.css">
 	<title>Drucker Freund</title>  
 	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
 <body>
-	<div class="container">
+	<header class="header clearfix">
+		<div class="logo">Drucker Freund</div>
+	</header>
 
-		<header class="header clearfix">
-			<div class="logo">Drucker Freund</div>
-		</header>
+	<div class="container">
 
 		<div class="info">
 			<article class="clearfix">
 	
 				<div class="col_50">
-					<div class="col_33">&#160;</div>
-					<div class="col_66 chk_box">
-						<!-- <p><input type="checkbox" name="checkbox"/> Simple agreement</p> -->
-						<button type="button" class="button" href="#shell">Generate</button>
+					<select class="select2" multiple="multiple" style="width: 100%"></select></br>
+					<div class="col_25"><button type="button" class="button" href="#shell">Generate</button></div>
+					<div class="col_75 padd">
+						<select class="select2_default" style="width: 100%">
+							<option></option>
+						</select>
 					</div>
+					<!-- <button type="button" class="button red" href="#shell">Clear</button> -->
 				</div>
 				<div class="col_50">
 					<p class="shell" id="shell" name="shell"></p>
@@ -31,15 +35,28 @@
 			</article>
 		</div>
 		<script src='js/jquery.min.js'></script>
+		<script src='js/select2.min.js'></script>
 		<script src='js/app.js'></script>
 		<script>
 			document.getElementById('shell').contentEditable = true;
-
+			
 			$(window).load(function() {
-				$(".chk_box").shopaholic({
+				$(".select2").druckerfreund({
 					shell: $('.shell'),
-					thatbooton: $('.button')
+					thatbooton: $('.button'),
+					def_printer: $(".select2_default"),
+					domain: "smb://print.example.com"
 				});
+
+				$(".select2").select2({
+					placeholder: "Select a printers",
+					allowClear: true
+				});
+				$(".select2_default").select2({
+					placeholder: "Select default printer",
+					allowClear: true
+				});
+				$('.select2_default').prop('disabled',true)
 			});
 		</script>
 	</div>

@@ -1,16 +1,11 @@
-
-.chk_box > p {
-/*	font-size: 1.5em;
-*/	margin-top: 0;
-	margin-bottom: 0.25em;	
-}
-.chk_box > p > input {
-	margin-right: 10px; 
+.padd {
+	padding-top: 1em;
+	padding-bottom: 1em;
 }
 .shell {
 	margin-top: 0;
-	border:2px solid black;
-	padding:8px 14px;
+	border: 1px solid #aaa;
+	padding: 4px 10px 5px 10px;
 }
 
 /* Skin "Solution" by Renat Rafikov */
@@ -46,8 +41,7 @@ ul li, ol li {
 .header:before {
 	content:"";
 	display:block;
-	width:5000px;
-	left:-2000px;
+	/*width:100%;*/
 	top:-10px;
 	border-top:10px solid #111111;
 	position:absolute;
@@ -176,11 +170,26 @@ h1 {
 	padding:0 0 4px 0;
 }
 
+a.button.red,
+.button.red {
+	color: white;
+	background: #ff0000;
+}
+a.button.red:hover,
+.button.red:hover {
+	color: white;  
+	background: #56a637;
+}
+a.button.red:active,
+.button.red:active {
+	color: white;
+	background: lightgreen;
+}
+
 a.button,
 .button {
 	margin-top: 1em;
 	margin-bottom: 1em;
-	width: 50%;
 	border:1px solid #969696;
 	text-align:center; 
 	text-decoration:none;

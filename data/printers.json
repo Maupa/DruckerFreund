@@ -1,7 +1,20 @@
 [
 	{
-		"name": "",
-		"location": "",
-		"driver":""
+		"name": "Library",
+		"location": "Library",
+		"group": "Library",
+		"driver":"LL239"
+	},
+	{
+		"name": "Class Room 01",
+		"location": "N Block",
+		"group": "Class Rooms",
+		"driver":"LL239"
+	}
+	{
+		"name": "Principal",
+		"location": "Admin",
+		"group": "Admin",
+		"driver":"560"
 	}
 ]

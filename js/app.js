@@ -1,25 +1,27 @@
 (function($) {
 
-	$.fn.shopaholic = function(params) {
+	$.fn.druckerfreund = function(params) {
 		var options = $.extend({
-			data: 'data/printers.json', //This line adding another parameter to the options... ```expands``` it
-			drivers: 'data/drivers.json' //This line adding another parameter to the options... ```expands``` it
+			data: 'data/printers.json',
+			drivers: 'data/drivers.json'
 		}, params);
 		var printers = {};
 		var driver = {};
 		var Super = this;
-		var domain = ""; //domain with tp
+		var def = '';
 		var model = {
 			printer: function(data){
-				return "/usr/sbin/lpadmin -p " + data.name + " -L \"" + data.location + "\" -E -v "+ domain + data.name + " -P \"/Library/Printers/PPDs/Contents/Resources/" + driver[data.driver] + "\""
+				var o = '';
+				if(def === data.name) o = ' -d';
+				return "/usr/sbin/lpadmin -p " + data.name + o + " -L \"" + data.location + "\" -E -v "+ options.domain + data.name + " -P \"/Library/Printers/PPDs/Contents/Resources/" + driver[data.driver] + "\""
 			}
 		};
-
 		$.getJSON( options.data, function( data ) {
 			$.each( data, function( n, item ) {
 				printers[item.name] = item;
-				var chkbx = $('<p><input type="checkbox" data-name="' + item.name + '" name="checkbox"/>' + item.name + '</p>');
-				Super.prepend(chkbx);
+				var option = $('<option value=\"' + item.name + '\">' + item.name + '</option>');
+				if($("optgroup[label=\'" + item.group + "\']").html() == null ) $(Super).append('<optgroup label=\"' + item.group + '\"></optgroup>');
+				$("optgroup[label=\'" + item.group + "\']").append(option);
 			});
 		});
 		$.getJSON( options.drivers, function( data ) {
@@ -27,11 +29,29 @@
 		});
 		options.thatbooton.click(function(){
 			options.shell.html('');
-			$('.chk_box input:checked').each(function() {
-				options.shell.append('<p>' + model.printer(printers[$(this).data('name')]) + '</p>');
+			$('option:selected', $(Super)).each(function() {
+				options.shell.append('<p>' + model.printer(printers[$(this).attr('value')]) + '</p>');
 			});
 			window.location.href = '#shell';
-        });
+		});
+		$(Super).change(function(){
+			if($('option:selected', Super).length > 0){
+				$(options.def_printer).html('<option></option>')
+				$('option:selected', Super).each(function() {
+					 $(options.def_printer).append('<option value=\"' + $(this).attr('value') + '\">' + $(this).attr('value') + '</option>');
+				})
+				$(options.def_printer).prop('disabled', false);
+			}else{
+				$(options.def_printer).html('<option></option>')
+				$(options.def_printer).prop('disabled', true);
+				def = '';
+			}
+		});
+		$(options.def_printer).change(function(){
+			$('option:selected', options.def_printer).each(function() {
+				def = $(this).attr('value');
+			})
+		})
 	};
 	
 }(jQuery));
