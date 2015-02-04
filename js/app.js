@@ -11,15 +11,18 @@
 		var def = '';
 		var model = {
 			printer: function(data){
-				var o = '';
-				if(def === data.name) o = ' -d';
-				return "/usr/sbin/lpadmin -p " + data.name + o + " -L \"" + data.location + "\" -E -v "+ options.domain + data.name + " -P \"/Library/Printers/PPDs/Contents/Resources/" + driver[data.driver] + "\""
+				var o = def === data.qname ? '-d' : '';
+				var name = data.name === '' ? data.qname : data.name; 
+				return '/usr/sbin/lpadmin -p ' + data.qname + o + ' -L "' 
+					+ data.location + '" -E -v ' + options.domain + data.name 
+					+ ' -P "/Library/Printers/PPDs/Contents/Resources/' + driver[data.driver] + '"'
+					+ ' -D "' +  name + '"';
 			}
 		};
 		$.getJSON( options.data, function( data ) {
 			$.each( data, function( n, item ) {
-				printers[item.name] = item;
-				var option = $('<option value=\"' + item.name + '\">' + item.name + '</option>');
+				printers[item.qname] = item;
+				var option = $('<option value=\"' + item.qname + '\">' + item.name + '</option>');
 				if($("optgroup[label=\'" + item.group + "\']").html() == null ) $(Super).append('<optgroup label=\"' + item.group + '\"></optgroup>');
 				$("optgroup[label=\'" + item.group + "\']").append(option);
 			});
