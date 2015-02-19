@@ -11,9 +11,9 @@
 		var def = '';
 		var model = {
 			printer: function(data){
-				var o = def === data.qname ? '-d' : '';
+				var o = def === data.qname ? ' -d ' : '';
 				var name = data.name === '' ? data.qname : data.name; 
-				return '/usr/sbin/lpadmin -p ' + data.qname + o + ' -L "' 
+				return '/usr/sbin/lpadmin -p ' + data.qname + o + '-L "' 
 					+ data.location + '" -E -v ' + options.domain + data.name 
 					+ ' -P "/Library/Printers/PPDs/Contents/Resources/' + driver[data.driver] + '"'
 					+ ' -D "' +  name + '"';
