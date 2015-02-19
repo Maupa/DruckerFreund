@@ -1,23 +1,9 @@
 [
 	{
-		"name": "Library",
-		"qname": "Library_LL239",
-		"location": "Library",
-		"group": "Library",
-		"driver":"LL239"
-	},
-	{
-		"name": "Class Room 01",
-		"qname": "CR01_LL239",
-		"location": "N Block",
-		"group": "Class Rooms",
-		"driver":"LL239"
-	}
-	{
-		"name": "Principal",
-		"qname": "Principal_560",
-		"location": "Admin",
-		"group": "Admin",
-		"driver":"560"
+		"name": "",
+		"qname": "",
+		"location": "",
+		"group": "",
+		"driver":""
 	}
 ]
