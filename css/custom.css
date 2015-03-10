@@ -12,36 +12,29 @@
 	white-space: nowrap; /* Don't forget this one */
 	text-overflow: ellipsis;
 }
-.printer{
-	
-}
-.printer.add{
-	margin-top: 1em;
-	margin-bottom: 1em;
-	padding: 0 1em 0 1em;
+
+.printer.new{
 	border-left: solid 0.5em red;
 }
-.printer > input{
-	padding: 0.3em;
-	width: 100%;
-	margin-bottom: 0.25em;
-	margin-top: 0.25em;
-}
 
-
-.driver.add{
-	margin-top: 1em;
-	margin-bottom: 1em;
-	padding: 0 1em 0 1em;
+.driver.new{
 	border-right: solid 0.5em red;
 }
 
-.driver > input{
+.printer.new, .driver.new{
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding: 0 1em 0 1em;
+}
+
+
+.driver > input, .printer > input{
 	padding: 0.3em;
 	width: 100%;
 	margin-bottom: 0.25em;
 	margin-top: 0.25em;
 }
+
 .close{
 	cursor: pointer;
 	background: none;
