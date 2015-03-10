@@ -2,6 +2,7 @@
 
 	$.fn.df_edit = function(options){
 		var defs = $.extend({}, options);
+
 		var handlers = {
 			destroy: function(){
 				$(this)
@@ -15,11 +16,12 @@
 				});
 			}
 		};
+
 		var models = {
 			keyval: function(key, value){
 				return  '<div class="large-12 columns">' +
-							'<div class="large-6 columns tr">"<span class="green">' + key + '</span>" :</div>' +
-							'<div class="large-6 columns tl crop">"<span class="green">' + value + '</span>"</div>' +
+							'<div class="large-4 columns tr">"<span class="green">' + key + '</span>" :</div>' +
+							'<div class="large-8 columns tl crop">"<span class="green">' + value + '</span>"</div>' +
 						'</div>';
 			},
 			item: function(type, data){
@@ -38,10 +40,17 @@
 			}
 
 		};
-
+		
 		$.getJSON('data/printers.json').done(function(data){
-			for(printer of data){
-				$('.printers').append(models.item('printer', printer));
+			for(item of data){
+				$('.printers').append(models.item('printer', item));
+			}
+			$('.close').on("click", handlers.destroy);
+		});
+
+		$.getJSON('data/drivers.json').done(function(data){
+			for(item of data){
+				$('.drivers').append(models.item('driver', item));
 			}
 			$('.close').on("click", handlers.destroy);
 		});
