@@ -8,7 +8,13 @@
 		<link rel="stylesheet" href="css/custom.css" />
 		<script src="js/vendor/modernizr.js"></script>
 		<style type="text/css">
-			
+			.scripts{
+				border: solid 1px black;
+				padding: 1em;
+			}
+			.scripts > p{
+				margin: 0;
+			}
 		</style>
 	</head>
 	<body>
@@ -21,18 +27,18 @@
 		
 		<div class="row">
 
-			<div class="large-6 columns">
+			<div class="large-5 columns">
 				<h2 style="margin-left:0.3em">Select printers</h2>
 				<div class="large-12 columns printers">
-		
+					<select class="select2_default" style="width: 100%">
+						<option></option>
+					</select>
 				</div>
 			</div>
 
-			<div class="large-6 columns">
-				<h2 class="tl" style="margin-left:0.3em">Code</h2>
-				<div class="large-12 columns drivers">
-	
-				</div>
+			<div class="large-7 columns">
+				<h2 class="tl" style="margin-left:0.3em">Scripts</h2>
+				<div class="large-12 columns scripts" contentEditable="true"></div>
 			</div>
 
 		</div>	
@@ -55,6 +61,7 @@
 		<script type="text/javascript" src="js/df.gen.jquery.js"></script>
 		<script>
 			$(document).ready(function(){
+				$('.select2_default').df_gen();
 				$(document).foundation();
 			})
 		</script>
