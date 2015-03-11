@@ -14,25 +14,29 @@
 	<body>
 		
 		<div class="row">
-			<div class="large-6 columns">
-				<h1>D.F.</h1>
+			<div class="large-12 columns">
+				<h1>D.F. - Editing</h1>
 			</div>
 		</div>
-		
+
 		<div class="row">
 
 			<div class="large-6 columns">
-				<h2 style="margin-left:0.3em">Select printers</h2>
+				<h2 style="margin-left:0.3em"> <span class="add printer">+</span> PRINTERS</h2>
+				<div class="large-12 columns">[</div>
 				<div class="large-12 columns printers">
 		
 				</div>
+				<div class="large-12 columns">]</div>
 			</div>
 
 			<div class="large-6 columns">
-				<h2 class="tl" style="margin-left:0.3em">Code</h2>
+				<h2 class="tl" style="margin-left:0.3em"> <span class="add driver">+</span> DRIVERS</h2>
+				<div class="large-12 columns">[</div>
 				<div class="large-12 columns drivers">
 	
 				</div>
+				<div class="large-12 columns">]</div> 
 			</div>
 
 		</div>	
@@ -44,17 +48,17 @@
 			</div>
 			<div class="large-6 columns">
 				<ul class="inline-list right">
-					<li><a href="edit.html">Edit printers →</a></li>
+					<li><a href="index.html"> ← Back to main</a></li>
 				</ul>
 			</div>
 		</div>
 
-		
 		<script type="text/javascript" src="js/vendor/jquery.js"></script>
 		<script type="text/javascript" src="js/foundation.min.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 		<script>
 			$(document).ready(function(){
+				$(document).df_edit();
 				$(document).foundation();
 			})
 		</script>
