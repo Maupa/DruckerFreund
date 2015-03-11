@@ -18,18 +18,25 @@
 					+ ' -P "/Library/Printers/PPDs/Contents/Resources/' + driver[data.driver] + '"'
 					+ ' -D "' +  name + '"';
 			}
-		}
+		};
 
 
 		$.getJSON('data/printers.json').done(function(data){
 			cache.printers = data;
+			
+			for(printer of data){
+				var option = $('<option value=\"' + printer.qname + '\">' + printer.name + '</option>');
+				if($("optgroup[label=\'" + printer.group + "\']").html() == null ) $(Super).append('<optgroup label=\"' + printer.group + '\"></optgroup>');
+				$("optgroup[label=\'" + printer.group + "\']").append(option);
+			}
+				
 		}).fail(function(){
 			console.log('Error while loading ' + 'printers.json.</br> Please fix the JSON and refresh the page.');
 		});
 
 		$.getJSON('data/drivers.json').done(function(data){
 			for(driver of data){
-				cache.drivers[driver.name] = driver.location
+				cache.drivers[driver.name] = driver.location;
 			}
 		}).fail(function(){
 			console.log('Error while loading ' + 'drivers.json.</br> Please fix the JSON and refresh the page.');
@@ -38,7 +45,7 @@
 		$(Super).change(function(){
 			$('option:selected', Super).each(function() {
 				console.log(this);
-			})
+			});
 		})
 	}
 
