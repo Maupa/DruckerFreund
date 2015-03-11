@@ -48,4 +48,4 @@ All configs are stored in JSON format, in `data/` folder.
 
 ## ToDo:
  - change default colour https://unix.stackexchange.com/questions/18323/how-do-i-make-blackwhite-the-default
- - ~~change default printer~~
+ - change default printer

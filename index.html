@@ -8,15 +8,6 @@
 		<link rel="stylesheet" type="text/css" href="css/custom.css" />
 		<link rel="stylesheet" type="text/css" href="css/select2.css">
 		<script src="js/vendor/modernizr.js"></script>
-		<style type="text/css">
-			.scripts{
-				border: solid 1px black;
-				padding: 1em;
-			}
-			.scripts > p{
-				margin: 0;
-			}
-		</style>
 	</head>
 	<body>
 		
@@ -63,7 +54,9 @@
 		<script type="text/javascript" src="js/select2.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$('.select2').df_gen();
+				$('.select2').df_gen({
+					domain: 'example.com'
+				});
 				$(".select2").select2({
 					placeholder: "Select a printers",
 					allowClear: true

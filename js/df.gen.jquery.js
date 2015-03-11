@@ -1,9 +1,12 @@
 (function($){
 
 	$.fn.df_gen = function(options){
-		var defaults = $.extend({}, options);
+		var defaults = $.extend({
+			scripts: $('.scripts'),
+			domain: 'example.com'
+		}, options);
 		var cache = {
-			printers: [],
+			printers: {},
 			drivers: {}
 		};
 
@@ -11,11 +14,10 @@
 
 		var models = {
 			script: function(data){
-				var o = def === data.qname ? ' -d ' : '';
 				var name = data.name === '' ? data.qname : data.name; 
 				return '/usr/sbin/lpadmin -p ' + data.qname + ' -L "' 
-					+ data.location + '" -E -v ' + options.domain + data.name 
-					+ ' -P "/Library/Printers/PPDs/Contents/Resources/' + driver[data.driver] + '"'
+					+ data.location + '" -E -v ' + defaults.domain + '/' + data.name 
+					+ ' -P "/Library/Printers/PPDs/Contents/Resources/' + cache.drivers[data.driver] + '"'
 					+ ' -D "' +  name + '"';
 			}
 		};
@@ -23,8 +25,11 @@
 
 		$.getJSON('data/printers.json').done(function(data){
 			cache.printers = data;
-			
+
 			for(printer of data){
+
+				cache.printers[printer.qname] = printer;
+
 				var option = $('<option value=\"' + printer.qname + '\">' + printer.name + '</option>');
 				if($("optgroup[label=\'" + printer.group + "\']").html() == null ) $(Super).append('<optgroup label=\"' + printer.group + '\"></optgroup>');
 				$("optgroup[label=\'" + printer.group + "\']").append(option);
@@ -43,8 +48,10 @@
 		});
 
 		$(Super).change(function(){
+			$(defaults.scripts).html('');
 			$('option:selected', Super).each(function() {
-				console.log(this);
+				var id = cache.printers[$(this).attr('value')];
+				$(defaults.scripts).append('<p>' + models.script(id) + '</p>');
 			});
 		})
 	}
