@@ -1,6 +1,11 @@
 (function($){
 
 	$.fn.df_edit = function(options){
+		var structures = {
+			printers: {},
+			drivers: {}
+		};
+
 		var defs = $.extend({}, options);
 
 		var models = {
@@ -79,10 +84,6 @@
 							$(parent).html('');
 							$(parent)
 								.append('"<span class="green">' + value + '</span>"');
-								// .animate({
-
-								// }, 250);
-
 						});
 					}
 				})
@@ -97,11 +98,7 @@
 
 
 		$('.df_btn_add').on('click', handlers.submit);
-		// var structures = {
-		// 	printer : {
-				
-		// 	}
-		// }
+		
 		var converter = { name : 'Name', qname : 'Queue name', location : 'Location', group : 'Group', driver : 'Driver' };
 		
 		
@@ -110,13 +107,23 @@
 				$('.printers').append(models.view.item('printer', item));
 			}
 			$('.close').on("click", handlers.destroy);
+
+			cache.printers[printer.qname] = printer;
+		}).fail(function(){
+			console.log('Error while loading ' + 'printers.json.</br> Please fix the JSON and refresh the page.');
 		});
 
 		$.getJSON('data/drivers.json').done(function(data){
 			for(item of data){
 				$('.drivers').append(models.view.item('driver', item));
 			}
+
 			$('.close').on("click", handlers.destroy);
+
+			cache.drivers[driver.name] = driver.location;
+
+		}).fail(function(){
+			console.log('Error while loading ' + 'drivers.json.</br> Please fix the JSON and refresh the page.');
 		});
 	}
 	
