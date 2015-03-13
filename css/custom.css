@@ -28,7 +28,7 @@
 	width: 64%;
 }
 
-.crop > select, .crop > input.btn{
+.crop > select, .crop > input.df_btn_add{
 	background: white;
 }
 
@@ -36,7 +36,7 @@
 	color: #202020
 }
 
-.crop > input.btn{
+.crop > input.df_btn_add{
 	border: 1px solid #c0c0c0;
 	/*text-align: left;*/
 	color: #101010
@@ -49,12 +49,12 @@
 	border-right: solid 0.5em red;
 }
 
-.printer.new, .driver.new{
+/*.printer.new, .driver.new{
 	margin-top: 1em;
 	margin-bottom: 1em;
 	padding: 0 1em 0 1em;
 }
-
+*/
 .driver > input, .printer > input{
 	padding: 0.3em;
 	width: 100%;
