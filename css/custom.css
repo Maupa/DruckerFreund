@@ -24,10 +24,27 @@
 	text-overflow: ellipsis;
 }
 
+.crop > input, .crop > select{
+	width: 64%;
+}
+
+.crop > select, .crop > input.btn{
+	background: white;
+}
+
+.crop > select{
+	color: #202020
+}
+
+.crop > input.btn{
+	border: 1px solid #c0c0c0;
+	/*text-align: left;*/
+	color: #101010
+}
+
 .printer.new{
 	border-left: solid 0.5em red;
 }
-
 .driver.new{
 	border-right: solid 0.5em red;
 }
