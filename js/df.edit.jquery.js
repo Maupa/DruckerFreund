@@ -3,25 +3,6 @@
 	$.fn.df_edit = function(options){
 		var defs = $.extend({}, options);
 
-		var handlers = {
-			destroy: function(){
-				$(this)
-				.parents().eq(2)
-				.animate({
-					height: 0, 
-					width: 0,
-					opacity: 0
-				}, 250, function(){
-					$(this).remove();
-				});
-			}
-		};
-		var structures = {
-			printer : {
-				
-			}
-		}
-		var converter = { name : 'Name', qname : 'Queue name', location : 'Location', group : 'Group', driver : 'Driver' };
 		var models = {
 			view: {
 				keyval: function(key, value){
@@ -44,25 +25,85 @@
 					return item;
 
 				}
-			}
-			// edit: {
-			// 	item: function(type, data){
-			// 	// 	var item = '<div class="printer add">';
-			// 	// 	for(key of Object.keys(data)){
-			// 	// 		item += this.keyval(key, data[key]);
-			// 	// 	}
-			// 	// 		<input type="text" autocomplete="off" name="name"  placeholder="Name"><br/>
-			// 	// 		<input type="text" autocomplete="off" name="qname"  placeholder="Queue name"><br/>
-			// 	// 		<input type="text" autocomplete="off" name="location"  placeholder="Location"><br/>
-			// 	// 		<input type="text" autocomplete="off" name="group"  placeholder="Group"><br/>
-			// 	// 		<input type="text" autocomplete="off" name="driver"  placeholder="Driver"><br/>
-			// 	// 		<input type="button" class="submit" autocomplete="off" name="submit" value="Submit"><br/>
-			// 	// 	</div>
-			// 	}
+			},
+			edit: {
+				item: function(type, data){
+				// 	var item = '<div class="printer add">';
+				// 	for(key of Object.keys(data)){
+				// 		item += this.keyval(key, data[key]);
+				// 	}
+				// 		<input type="text" autocomplete="off" name="name"  placeholder="Name"><br/>
+				// 		<input type="text" autocomplete="off" name="qname"  placeholder="Queue name"><br/>
+				// 		<input type="text" autocomplete="off" name="location"  placeholder="Location"><br/>
+				// 		<input type="text" autocomplete="off" name="group"  placeholder="Group"><br/>
+				// 		<input type="text" autocomplete="off" name="driver"  placeholder="Driver"><br/>
+				// 		<input type="button" class="submit" autocomplete="off" name="submit" value="Submit"><br/>
+				// 	</div>
+				}
 
-			// }
+			}
 
 		};
+
+		var handlers = {
+			destroy: function(){
+				$(this)
+				.parents().eq(2)
+				.animate({
+					height: 0, 
+					width: 0,
+					opacity: 0
+				}, 250, function(){
+					$(this).remove();
+				});
+			},
+			submit: function(){
+				var x = $(this).parents().eq(2);
+				$('input, select', x).each(function(){
+					if($(this).hasClass('df_btn_add')){
+
+						$(this).parents().eq(1).animate({
+							width: 0
+						}, 250, function(){
+							$(this).remove();
+						});
+
+					}else{
+						$(this).animate({
+							width: 0
+						}, 250, function(){
+							// $(this).remove();
+							var value = $(this).val();
+							var type = $(this);
+							var parent = $(this).parent();
+							$(parent).html('');
+							$(parent)
+								.append('"<span class="green">' + value + '</span>"');
+								// .animate({
+
+								// }, 250);
+
+						});
+					}
+				})
+				// $(this)
+				// .parents().eq(2).animate({
+				// 	height: 0, 
+				// 	width: 0,
+				// 	opacity: 0
+				// }, 250);
+			}
+		};
+
+
+		$('.df_btn_add').on('click', handlers.submit);
+		// var structures = {
+		// 	printer : {
+				
+		// 	}
+		// }
+		var converter = { name : 'Name', qname : 'Queue name', location : 'Location', group : 'Group', driver : 'Driver' };
+		
 		
 		$.getJSON('data/printers.json').done(function(data){
 			for(item of data){
