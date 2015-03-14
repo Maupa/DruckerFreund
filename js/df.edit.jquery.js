@@ -106,12 +106,12 @@
 
 		var converter = { name : 'Name', qname : 'Queue name', location : 'Location', group : 'Group', driver : 'Driver' };
 		
+		$(document).on("click", '.close', handlers.destroy);
 		
 		$.getJSON('data/printers.json').done(function(data){
 			for(item of data){
 				$('.printers').append(models.view.item('printer', item));
 			}
-			$('.close').on("click", handlers.destroy);
 
 			cache.printers[printer.qname] = printer;
 		}).fail(function(){
@@ -122,8 +122,6 @@
 			for(item of data){
 				$('.drivers').append(models.view.item('driver', item));
 			}
-
-			$('.close').on("click", handlers.destroy);
 
 			cache.drivers[driver.name] = driver.location;
 
