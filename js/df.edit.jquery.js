@@ -2,7 +2,7 @@
 
 	$.fn.df_edit = function(options){
 		var defs = $.extend({}, options);
-		var structures = {
+		var cache = {
 			printers: {},
 			drivers: {}
 		};
@@ -44,7 +44,7 @@
 				},
 				driver: function(driver){
 					//Checks if driver exists
-					return structures[driver] !== undefined ? true : false
+					return cache.drivers[driver] !== undefined ? true : false
 				},
 				other: function(str){
 					return str.search(/[\w\d]+/) !== -1 ? true : false  
