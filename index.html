@@ -57,10 +57,14 @@
 				$('.select2').df_gen({
 					domain: 'example.com'
 				});
+				
 				$(".select2").select2({
-					placeholder: "Select a printers",
+					placeholder: 'Select a printers',
 					allowClear: true
 				});
+				
+				$('.select2').select2('open');
+				
 				$(document).foundation();
 			})
 		</script>
