@@ -17,6 +17,7 @@
 				var name = data.name === '' ? data.qname : data.name; 
 				return '/usr/sbin/lpadmin -p ' + data.qname + ' -L "' 
 					+ data.location + '" -E -v ' + defaults.domain + '/' + data.name 
+					+ ' -o printer-is-shared=false '
 					+ ' -P "/Library/Printers/PPDs/Contents/Resources/' + cache.drivers[data.driver] + '"'
 					+ ' -D "' +  name + '"';
 			}
