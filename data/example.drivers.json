@@ -1,4 +1,10 @@
-{
-	"560": "en.lproj/Xerox 550-560 Integrated Fiery",
-	"LL239": "example.gz"
-}
+[
+	{
+		"name":"560",
+		"location":"en.lproj/Xerox 550-560 Integrated Fiery"
+	},
+	{
+		"name":"LL239",
+		"location":"example.gz"
+	}
+]
