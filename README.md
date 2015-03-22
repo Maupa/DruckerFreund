@@ -11,7 +11,7 @@ Its a web app that generates scripts for installing printers for OSX.
 All configs are stored in JSON format, in `data/` folder.
 
 ### `printers.json`
-```json
+```js
 [
 	{
 		//Printers name - the way user sees
@@ -33,7 +33,7 @@ All configs are stored in JSON format, in `data/` folder.
 ```
 
 ### `drivers.json`
-```json
+```js
 [
 	{
 		//Name of the driver
