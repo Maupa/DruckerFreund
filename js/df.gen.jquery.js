@@ -26,11 +26,8 @@
 
 		$.getJSON('data/printers.json').done(function(data){
 			cache.printers = data;
-
-			for(printer of data){
-
+			for(var i = 0, printer; printer = data[i]; i++){
 				cache.printers[printer.qname] = printer;
-
 				var option = $('<option value=\"' + printer.qname + '\">' + printer.name + '</option>');
 				if($("optgroup[label=\'" + printer.group + "\']").html() == null ) $(Super).append('<optgroup label=\"' + printer.group + '\"></optgroup>');
 				$("optgroup[label=\'" + printer.group + "\']").append(option);
@@ -41,7 +38,7 @@
 		});
 
 		$.getJSON('data/drivers.json').done(function(data){
-			for(driver of data){
+			for(var i = 0, driver; driver = data[i]; i++){
 				cache.drivers[driver.name] = driver.location;
 			}
 		}).fail(function(){
